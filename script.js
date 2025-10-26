@@ -114,7 +114,7 @@ function criarLikert(container) {
 document.addEventListener("DOMContentLoaded", async () => {
   await carregarFrases();
 
-  document.querySelectorAll(".likert").forEach(c => criarLikert(c));
+  document.querySelectorAll(".likert-row").forEach(c => criarLikert(c));
 
   document.getElementById("iniciar-consentimento").onclick = () => {
     document.getElementById("consentimento").classList.add("oculto");

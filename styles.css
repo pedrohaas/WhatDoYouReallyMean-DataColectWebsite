@@ -163,3 +163,67 @@ input[type=number]:focus, select:focus {
     padding: 0.3em 0.3em;
   }
 }
+
+body {
+  font-family: 'Inter', 'Roboto', Arial, sans-serif;
+  background: #f4f6fa;
+  color: #222;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  /* sempre centraliza vertical e horizontal */
+}
+
+main {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  width: 100%;
+  max-width: 498px; /* ajuste para desktop */
+  min-width: 0;
+  margin: 2rem 0;
+  border-radius: 20px;
+  padding: 2.2rem 1.4rem 2rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+#container-frases {
+  background: #f0f5ff;
+  border: 1px solid #dde5f2;
+  padding: 1.2rem;
+  border-radius: 10px;
+  margin-bottom: 2em;
+  font-size: 1.05em;
+  line-height: 1.55;
+  min-height: 95px;
+  max-height: 38vh;
+  overflow-y: auto;
+  word-break: break-word;
+  box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+  main {
+    max-width: 99vw;
+    margin: 0;
+    padding: 1rem 3vw;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+  #container-frases {
+    font-size: 1em;
+    max-height: 40vh;
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    padding: 0.2rem 0.2rem;
+  }
+  #container-frases {
+    padding: .8em .5em;
+  }
+}
