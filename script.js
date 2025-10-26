@@ -179,17 +179,33 @@ function encerrar() {
 }
 
 const frasesMotivacionais = [
-  "Obrigado pela sua ajuda! Faltam só algumas.",
-  "Falta pouco! Mais uma avaliação.",
-  "Você está quase lá, continue!",
-  "Sua participação faz toda diferença!",
-  "Por favor, aguarde... Carregando próxima frase."
+  "Falta pouco! Você está quase lá.",
+  "Obrigado pela sua ajuda!",
+  "Sua participação está contribuindo muito!",
+  "Só mais um pouco!",
+  "Continuamos contando com sua colaboração.",
+  "Você está ajudando a ciência. Obrigado!",
+  "Seu esforço está quase completo.",
+  "Mais uma resposta para avançar!",
+  "Faltam poucas frases — continue!",
+  "Parabéns pelo empenho!",
+  "Vamos concluir juntos?",
+  "A pesquisa agradece por cada resposta sua.",
+  "Continue, sua participação faz diferença!",
+  "Mais uma avaliação importante.",
+  "Quase lá — siga firme!",
+  "Muito obrigado pelo seu tempo dedicado.",
+  "Estamos perto de finalizar.",
+  "Você está indo muito bem!",
+  "É rapidinho, logo acaba.",
+  "Que bom poder contar com a sua ajuda!"
 ];
+
 
 function mostrarLoading() {
   const loading = document.getElementById('loading');
   document.getElementById('loading-frase').textContent =
-    frasesMotivacionais[Math.floor(Math.random()*frasesMotivacionais.length)];
+  frasesMotivacionais[Math.floor(Math.random()*frasesMotivacionais.length)];
   loading.classList.add('show');
 }
 function esconderLoading() {
