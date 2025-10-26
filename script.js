@@ -1,5 +1,3 @@
-import { v4 as uuidv4 } from "https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/esm-browser/index.js";
-
 let frases = [];
 let indice = 0;
 let userId = uuidv4();
