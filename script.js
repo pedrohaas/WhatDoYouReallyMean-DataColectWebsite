@@ -146,6 +146,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       timestamp: new Date().toISOString()
     };
     await salvarAvaliacao(dados);
+
+    mostrarLoading();
+    setTimeout(() => {
+      // aqui a lógica de avançar para próxima frase
+      // dentro de mostrarFrase() já faz limpar rádios!
+      esconderLoading();
+    }, 900); // mostre loading por pelo menos 0.9s para fluidez
+
     indice++;
     if (indice < frases.length) mostrarFrase();
     else encerrar();
@@ -158,9 +166,33 @@ function mostrarFrase() {
     <p><strong>Frase reestruturada por IA:</strong> ${frases[indice].reconstruida}</p>
   `;
   document.querySelectorAll(".likert input").forEach(inp => inp.checked = false);
+
+  // Desmarca todos os rádios após renderizar nova frase
+  document.querySelectorAll(".likert-row input[type=radio]").forEach(inp => {
+    inp.checked = false;
+  });
 }
 
 function encerrar() {
   document.getElementById("avaliacao").classList.add("oculto");
   document.getElementById("final").classList.remove("oculto");
 }
+
+const frasesMotivacionais = [
+  "Obrigado pela sua ajuda! Faltam só algumas.",
+  "Falta pouco! Mais uma avaliação.",
+  "Você está quase lá, continue!",
+  "Sua participação faz toda diferença!",
+  "Por favor, aguarde... Carregando próxima frase."
+];
+
+function mostrarLoading() {
+  const loading = document.getElementById('loading');
+  document.getElementById('loading-frase').textContent =
+    frasesMotivacionais[Math.floor(Math.random()*frasesMotivacionais.length)];
+  loading.classList.add('show');
+}
+function esconderLoading() {
+  document.getElementById('loading').classList.remove('show');
+}
+
