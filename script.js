@@ -15,42 +15,70 @@ let indice = 0;
 let userId = uuidv4();
 let idade, escolaridade;
 
+// Função baseada em Regex para parsing CSV seguro (suporta aspas e vírgulas dentro das células)
+function parseCSV(text) {
+  const linhas = [];
+  const regex = /("([^"]|"")*"|[^,\r\n]*)(,|\r?\n|$)/g;
+  let row = [], match;
+  let i = 0;
+
+  text = text.replace(/\r/g, ""); // Sanitize newlines
+
+  while ((match = regex.exec(text))) {
+    let val = match[1];
+    if (val === undefined) break;
+    // Remove aspas duplas e faz unescape
+    if (val.startsWith('"')) val = val.slice(1, -1).replace(/""/g, '"');
+    row.push(val);
+    if (match[3] === "\n" || match[3] === "" || match[3] === "\r\n") {
+      // pular header se i == 0
+      if (i > 0 && row.length >= 3) {
+        linhas.push({ id: row[0], original: row[1], reconstruida: row[2] });
+      }
+      row = [];
+      i++;
+    }
+  }
+  return linhas;
+}
+
+// Ao carregar frases
 async function carregarFrases() {
   const response = await fetch("frases.csv");
   const texto = await response.text();
-  const linhas = texto.trim().split("\n").slice(1);
-  frases = linhas.map(l => {
-    const partes = l.split(",");
-    return { id: partes[0], original: partes[1], reconstruida: partes[2] };
-  });
+  frases = parseCSV(texto); // frases vira array de objetos {id, original, reconstruida}
   frases = frases.sort(() => Math.random() - 0.5);
 }
 
+
 function criarLikert(container) {
-  container.innerHTML = ''; // Limpa antes de criar
+  container.innerHTML = '';
+  const criterio = container.dataset.criterio;
+
   for (let i = 1; i <= 7; i++) {
     const label = document.createElement("label");
+    label.className = "likert-label";
     const input = document.createElement("input");
     input.type = "radio";
-    input.name = container.dataset.criterio;
+    input.name = criterio;
     input.value = i;
-    // Para acessibilidade, ids únicos:
-    input.id = `${container.dataset.criterio}-${i}`;
-    label.setAttribute('for', input.id);
+    input.required = true;
+    input.id = `${criterio}-${i}`;
 
     label.appendChild(input);
-    // Rótulos extremos
-    if (i === 1)
-      label.appendChild(document.createElement('br')),
-      label.appendChild(document.createElement('span')).textContent = "Discordo totalmente";
-    else if (i === 7)
-      label.appendChild(document.createElement('br')),
-      label.appendChild(document.createElement('span')).textContent = "Concordo totalmente";
-    else
-      label.appendChild(document.createTextNode(i.toString()));
+
+    let caption = i.toString();
+    if (i === 1) caption += ' <span>Discordo totalmente</span>';
+    if (i === 7) caption += ' <span>Concordo totalmente</span>';
+
+    let span = document.createElement("span");
+    span.innerHTML = caption;
+    label.appendChild(span);
+
     container.appendChild(label);
   }
 }
+
 
 
 document.addEventListener("DOMContentLoaded", async () => {
