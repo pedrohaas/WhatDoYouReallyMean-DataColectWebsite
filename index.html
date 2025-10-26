@@ -49,9 +49,17 @@
 
     <!-- Página 3: Avaliação -->
     <section id="avaliacao" class="pagina oculto">
-      <div id="container-frases">
-        <!-- Frases carregadas aqui -->
+      <div id="container-frases" class="frases-duplas">
+        <div class="frase-bloco frase-original">
+          <div class="frase-legenda">Frase original</div>
+          <p id="frase-original"></p>
+        </div>
+        <div class="frase-bloco frase-reconstruida">
+          <div class="frase-legenda">Frase reestruturada por IA</div>
+          <p id="frase-reconstruida"></p>
+        </div>
       </div>
+
       <form id="avaliacao-form">
         <div class="escala-group">
           <label class="escala-label">Clareza <span class="escala-aux">— Improvement in clarity</span></label>

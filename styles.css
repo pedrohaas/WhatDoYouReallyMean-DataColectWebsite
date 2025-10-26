@@ -242,3 +242,53 @@ input[type=number]:focus, select:focus {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}
 }
+
+#container-frases.frases-duplas {
+  display: flex;
+  gap: 1.1em;
+  background: none;
+  border: none;
+  margin-bottom: 2em;
+  padding: 0;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.frase-bloco {
+  background: #fafdff;
+  border: 1.5px solid #d8e5f2;
+  border-radius: 14px;
+  padding: 1em 1.1em 1em 1.1em;
+  flex: 1 1 0px;
+  min-width: 230px;
+  max-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.frase-original  { border-left: 5px solid #005fbf; }
+.frase-reconstruida { border-left: 5px solid #1ab685; }
+.frase-legenda {
+  font-size: 0.97em;
+  color: #2289c8;
+  font-weight: 600;
+  margin-bottom: 0.25em;
+  letter-spacing: 0.01em;
+}
+.frase-reconstruida .frase-legenda {
+  color: #18b877;
+}
+.frase-bloco p {
+  font-size: 1.01em;
+  margin: 0;
+  color: #1b2233;
+  line-height: 1.54;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+@media (max-width: 700px) {
+  #container-frases.frases-duplas { flex-direction: column; gap: 0.8em; }
+  .frase-bloco { padding: 0.85em 0.8em 0.95em 0.9em; min-width: 0; }
+  .frase-legenda { font-size: 0.98em; }
+}

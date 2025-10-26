@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       // aqui a lógica de avançar para próxima frase
       // dentro de mostrarFrase() já faz limpar rádios!
       esconderLoading();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, 900); // mostre loading por pelo menos 0.9s para fluidez
 
     indice++;
@@ -161,10 +162,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 function mostrarFrase() {
-  document.getElementById("container-frases").innerHTML = `
-    <p><strong>Frase original:</strong> ${frases[indice].original}</p>
-    <p><strong>Frase reestruturada por IA:</strong> ${frases[indice].reconstruida}</p>
-  `;
+  document.getElementById('frase-original').textContent = frases[indice].original;
+  document.getElementById('frase-reconstruida').textContent = frases[indice].reconstruida;
   document.querySelectorAll(".likert input").forEach(inp => inp.checked = false);
 
   // Desmarca todos os rádios após renderizar nova frase
