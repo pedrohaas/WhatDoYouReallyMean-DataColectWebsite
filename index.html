@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avaliação de Frases — Pesquisa PLN</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main id="app">
+    <section id="consentimento" class="pagina">
+      <h1>Estudo de Processamento de Linguagem Natural</h1>
+      <p>Este estudo busca avaliar frases reconstruídas por IA quanto à clareza, fidelidade ao conteúdo original e efetividade na remoção de ambiguidade e sarcasmo.</p>
+      <p>A participação é voluntária e anônima.</p>
+      <button id="iniciar-consentimento">Concordo e iniciar</button>
+    </section>
+
+    <section id="demografia" class="pagina oculto">
+      <h2>Informações Demográficas</h2>
+      <label>Idade: <input type="number" id="idade" min="10" max="110" required></label>
+      <label>Escolaridade:
+        <select id="escolaridade" required>
+          <option value="">Selecione</option>
+          <option>Ensino Médio</option>
+          <option>Graduação</option>
+          <option>Mestrado</option>
+          <option>Doutorado</option>
+          <option>Outro</option>
+        </select>
+      </label>
+      <button id="iniciar-avaliacao">Começar avaliação</button>
+    </section>
+
+    <section id="avaliacao" class="pagina oculto">
+      <div id="container-frases"></div>
+      <div id="escalas">
+        <div class="escala">
+          <label>Clareza</label>
+          <div class="likert" data-criterio="clareza"></div>
+        </div>
+        <div class="escala">
+          <label>Fidelidade ao conteúdo original</label>
+          <div class="likert" data-criterio="fidelidade"></div>
+        </div>
+        <div class="escala">
+          <label>Efetividade na remoção de ambiguidade e sarcasmo</label>
+          <div class="likert" data-criterio="efetividade"></div>
+        </div>
+      </div>
+      <button id="proxima-frase">Próxima frase</button>
+    </section>
+
+    <section id="final" class="pagina oculto">
+      <h2>Obrigado pela participação!</h2>
+      <p>Suas respostas foram registradas com sucesso.</p>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

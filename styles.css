@@ -1,0 +1,57 @@
+body {
+  font-family: 'Inter', 'Roboto', sans-serif;
+  background-color: #f4f6f8;
+  color: #222;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+main {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+h1, h2 {
+  color: #00497a;
+}
+
+button {
+  margin-top: 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fc1;
+}
+
+.oculto {
+  display: none;
+}
+
+.likert input {
+  margin: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+#container-frases {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
