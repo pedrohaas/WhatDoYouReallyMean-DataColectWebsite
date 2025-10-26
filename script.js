@@ -15,40 +15,70 @@ let indice = 0;
 let userId = uuidv4();
 let idade, escolaridade;
 
-// Função baseada em Regex para parsing CSV seguro (suporta aspas e vírgulas dentro das células)
 function parseCSV(text) {
   const linhas = [];
-  const regex = /("([^"]|"")*"|[^,\r\n]*)(,|\r?\n|$)/g;
-  let row = [], match;
+  const re = /(,|\r?\n|^)("(?:[^"]|"")*"|[^",\r\n]*)/g;
+  let currRow = [];
+  let match;
   let i = 0;
 
-  text = text.replace(/\r/g, ""); // Sanitize newlines
+  // Remove BOM e normaliza quebras de linha
+  text = text.replace(/^\uFEFF/, '');
 
-  while ((match = regex.exec(text))) {
-    let val = match[1];
-    if (val === undefined) break;
-    // Remove aspas duplas e faz unescape
-    if (val.startsWith('"')) val = val.slice(1, -1).replace(/""/g, '"');
-    row.push(val);
-    if (match[3] === "\n" || match[3] === "" || match[3] === "\r\n") {
-      // pular header se i == 0
-      if (i > 0 && row.length >= 3) {
-        linhas.push({ id: row[0], original: row[1], reconstruida: row[2] });
+  let rowIndex = 0;
+  let lastIndex = 0;
+  let inQuotes = false;
+  let field = '';
+  let rows = [];
+
+  for (let c = 0; c < text.length; c++) {
+    let char = text[c];
+    if (char === '"') {
+      if (inQuotes && text[c + 1] === '"') {
+        field += '"';
+        c++; // escapa aspas duplas
+      } else {
+        inQuotes = !inQuotes;
       }
-      row = [];
-      i++;
+    } else if (char === ',' && !inQuotes) {
+      currRow.push(field);
+      field = '';
+    } else if ((char === '\n' || char === '\r') && !inQuotes) {
+      if (char === '\r' && text[c + 1] === '\n') c++; // windows-style
+      currRow.push(field);
+      if (rowIndex > 0) {
+        // Pula header 
+        let [id, original, reconstruida] = currRow;
+        if (currRow.length >= 3)
+          linhas.push({ id, original, reconstruida });
+      }
+      currRow = [];
+      field = '';
+      rowIndex++;
+    } else {
+      field += char;
+    }
+  }
+  // Última linha
+  if (field.length > 0 || currRow.length > 0) {
+    currRow.push(field);
+    if (rowIndex > 0) {
+      let [id, original, reconstruida] = currRow;
+      if (currRow.length >= 3)
+        linhas.push({ id, original, reconstruida });
     }
   }
   return linhas;
 }
 
-// Ao carregar frases
+
 async function carregarFrases() {
   const response = await fetch("frases.csv");
   const texto = await response.text();
-  frases = parseCSV(texto); // frases vira array de objetos {id, original, reconstruida}
+  frases = parseCSV(texto); // Agora robusto!
   frases = frases.sort(() => Math.random() - 0.5);
 }
+
 
 
 function criarLikert(container) {
