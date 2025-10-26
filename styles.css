@@ -254,6 +254,7 @@ input[type=number]:focus, select:focus {
   width: 100%;
 }
 
+
 .frase-bloco {
   background: #fafdff;
   border: 1.5px solid #d8e5f2;
@@ -285,12 +286,6 @@ input[type=number]:focus, select:focus {
   line-height: 1.54;
   font-weight: 500;
   word-break: break-word;
-}
-
-@media (max-width: 700px) {
-  #container-frases.frases-duplas { flex-direction: column; gap: 0.8em; }
-  .frase-bloco { padding: 0.85em 0.8em 0.95em 0.9em; min-width: 0; }
-  .frase-legenda { font-size: 0.98em; }
 }
 
 .hint-frases {
