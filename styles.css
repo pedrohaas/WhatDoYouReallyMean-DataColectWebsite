@@ -245,12 +245,12 @@ input[type=number]:focus, select:focus {
 
 #container-frases.frases-duplas {
   display: flex;
+  flex-direction: column;
   gap: 1.1em;
   background: none;
   border: none;
   margin-bottom: 2em;
   padding: 0;
-  flex-wrap: wrap;
   width: 100%;
 }
 
