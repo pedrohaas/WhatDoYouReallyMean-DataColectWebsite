@@ -4,63 +4,76 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Avaliação de Frases — Pesquisa PLN</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
+  <script src="supabase.js"></script>
+  <script src="script.js"></script>
 </head>
 <body>
   <main id="app">
+    <!-- Página 1: Consentimento -->
     <section id="consentimento" class="pagina">
       <h1>Estudo de Processamento de Linguagem Natural</h1>
-      <p>Este estudo busca avaliar frases reconstruídas por IA quanto à clareza, fidelidade ao conteúdo original e efetividade na remoção de ambiguidade e sarcasmo.</p>
-      <p>A participação é voluntária e anônima.</p>
-      <button id="iniciar-consentimento">Concordo e iniciar</button>
+      <p class="intro">
+        Este estudo busca avaliar frases reconstruídas por IA quanto à clareza, fidelidade ao conteúdo original e efetividade na remoção de ambiguidade e sarcasmo.
+      </p>
+      <p class="info-sec">A participação é voluntária e anônima.</p>
+      <button id="iniciar-consentimento" class="btn-principal">Concordo e iniciar</button>
     </section>
 
+    <!-- Página 2: Demografia -->
     <section id="demografia" class="pagina oculto">
       <h2>Informações Demográficas</h2>
-      <label>Idade: <input type="number" id="idade" min="10" max="110" required></label>
-      <label>Escolaridade:
-        <select id="escolaridade" required>
-          <option value="">Selecione</option>
-          <option>Ensino Médio</option>
-          <option>Graduação</option>
-          <option>Mestrado</option>
-          <option>Doutorado</option>
-          <option>Outro</option>
-        </select>
-      </label>
-      <button id="iniciar-avaliacao">Começar avaliação</button>
+      <form id="demografia-form">
+        <div class="fieldgroup">
+          <label for="idade">Idade</label>
+          <input type="number" id="idade" min="10" max="110" required>
+        </div>
+        <div class="fieldgroup">
+          <label for="escolaridade">Escolaridade</label>
+          <select id="escolaridade" required>
+            <option value="">Selecione</option>
+            <option>Ensino Médio</option>
+            <option>Graduação</option>
+            <option>Mestrado</option>
+            <option>Doutorado</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <button id="iniciar-avaliacao" class="btn-principal" type="button">Começar avaliação</button>
+      </form>
     </section>
 
+    <!-- Página 3: Avaliação -->
     <section id="avaliacao" class="pagina oculto">
-      <div id="container-frases"></div>
-      <div id="escalas">
-        <div class="escala">
-          <label>Clareza</label>
-          <div class="likert" data-criterio="clareza"></div>
-        </div>
-        <div class="escala">
-          <label>Fidelidade ao conteúdo original</label>
-          <div class="likert" data-criterio="fidelidade"></div>
-        </div>
-        <div class="escala">
-          <label>Efetividade na remoção de ambiguidade e sarcasmo</label>
-          <div class="likert" data-criterio="efetividade"></div>
-        </div>
+      <div id="container-frases">
+        <!-- Frases carregadas aqui -->
       </div>
-      <button id="proxima-frase">Próxima frase</button>
+      <form id="avaliacao-form">
+        <div class="escala-group">
+          <label class="escala-label">Clareza <span class="escala-aux">— Improvement in clarity</span></label>
+          <div class="likert-row" data-criterio="clareza"></div>
+        </div>
+        <div class="escala-group">
+          <label class="escala-label">Fidelidade ao conteúdo original <span class="escala-aux">— Fidelity to the original content</span></label>
+          <div class="likert-row" data-criterio="fidelidade"></div>
+        </div>
+        <div class="escala-group">
+          <label class="escala-label">Efetividade na remoção de ambiguidade e sarcasmo <span class="escala-aux">— Effectiveness in removing ambiguity and sarcasm</span></label>
+          <div class="likert-row" data-criterio="efetividade"></div>
+        </div>
+        <button id="proxima-frase" class="btn-principal" type="button">Próxima frase</button>
+      </form>
     </section>
 
+    <!-- Página final -->
     <section id="final" class="pagina oculto">
       <h2>Obrigado pela participação!</h2>
       <p>Suas respostas foram registradas com sucesso.</p>
     </section>
   </main>
-
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js/dist/umd/supabase.min.js"></script>
-  <script src="supabase.js"></script>
-  <script src="script.js"></script>
-
-  <script type="module" src="script.js"></script>
 </body>
 </html>

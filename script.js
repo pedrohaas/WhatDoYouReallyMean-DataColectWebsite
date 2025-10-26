@@ -27,16 +27,31 @@ async function carregarFrases() {
 }
 
 function criarLikert(container) {
+  container.innerHTML = ''; // Limpa antes de criar
   for (let i = 1; i <= 7; i++) {
     const label = document.createElement("label");
-    label.textContent = i;
     const input = document.createElement("input");
     input.type = "radio";
     input.name = container.dataset.criterio;
     input.value = i;
-    container.append(input, label);
+    // Para acessibilidade, ids únicos:
+    input.id = `${container.dataset.criterio}-${i}`;
+    label.setAttribute('for', input.id);
+
+    label.appendChild(input);
+    // Rótulos extremos
+    if (i === 1)
+      label.appendChild(document.createElement('br')),
+      label.appendChild(document.createElement('span')).textContent = "Discordo totalmente";
+    else if (i === 7)
+      label.appendChild(document.createElement('br')),
+      label.appendChild(document.createElement('span')).textContent = "Concordo totalmente";
+    else
+      label.appendChild(document.createTextNode(i.toString()));
+    container.appendChild(label);
   }
 }
+
 
 document.addEventListener("DOMContentLoaded", async () => {
   await carregarFrases();
