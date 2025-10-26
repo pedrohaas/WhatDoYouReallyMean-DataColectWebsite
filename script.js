@@ -1,4 +1,3 @@
-import { salvarAvaliacao, exportarAvaliacoesCSV } from './supabase.js';
 import { v4 as uuidv4 } from "https://cdn.jsdelivr.net/npm/uuid@9.0.0/dist/esm-browser/index.js";
 
 let frases = [];

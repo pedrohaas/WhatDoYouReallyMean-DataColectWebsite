@@ -1,6 +1,6 @@
 // supabase.js
-const supabaseUrl = 'SUAURL';
-const supabaseKey = 'SUAANONKEY';
+const supabaseUrl = 'https://uqwivywhiocehghdnztf.supabase.co';
+const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxd2l2eXdoaW9jZWhnaGRuenRmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE0OTk0MDcsImV4cCI6MjA3NzA3NTQwN30.VkczSLl2ptEmIB1HT-Tlh027YfvGMyi3p3z5d-IqML4';
 const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
 
 async function salvarAvaliacao(dados) {
