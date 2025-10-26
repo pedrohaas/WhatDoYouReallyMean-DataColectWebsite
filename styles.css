@@ -297,3 +297,45 @@ input[type=number]:focus, select:focus {
   opacity: 0.95;
 }
 
+@media (max-width: 700px) {
+  main {
+    max-width: 100vw;
+    margin: 0;
+    padding: 0.7rem 0.15rem 1.7rem 0.15rem;
+    border-radius: 0;
+    min-height: 100vh;
+  }
+  #container-frases {
+    font-size: 1.08em; /* aumenta fonte para leitura mobile */
+    max-height: none;
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+  }
+  .frase-bloco {
+    padding: 1.1em 0.8em 1.1em 0.8em;
+    margin-bottom: 0.25em;
+    min-width: 0;
+    font-size: 1.12em;
+  }
+  .frase-legenda { font-size: 1.05em; }
+}
+
+@media (max-width: 420px) {
+  main {
+    padding: 0.09rem 0.04rem;
+  }
+  #container-frases { padding: .3em .04em; }
+  .frase-bloco { padding: 0.75em 0.17em; }
+}
+
+/* Garanta que cada frase-bloco ocupa toda a largura disponível */
+.frase-bloco {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Dê mais espaço entre os blocos das frases e os botões */
+#container-frases { margin-bottom: 2.3em; }
+.likert-row { margin-bottom: 1.2em; }
