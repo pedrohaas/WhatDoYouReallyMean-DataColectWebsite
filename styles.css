@@ -292,3 +292,13 @@ input[type=number]:focus, select:focus {
   .frase-bloco { padding: 0.85em 0.8em 0.95em 0.9em; min-width: 0; }
   .frase-legenda { font-size: 0.98em; }
 }
+
+.hint-frases {
+  font-size: 0.98em;
+  color: #466c96;
+  margin-bottom: 0.4em;
+  margin-top: -0.7em;
+  text-align: center;
+  opacity: 0.95;
+}
+
