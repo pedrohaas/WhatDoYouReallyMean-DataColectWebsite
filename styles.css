@@ -1,3 +1,6 @@
+/* =========================
+   MOBILE-FIRST BASE
+   ========================= */
 body {
   font-family: 'Inter', 'Roboto', Arial, sans-serif;
   background: #f4f6fa;
@@ -15,7 +18,6 @@ main {
   box-shadow: 0 4px 24px rgba(0,0,0,0.06);
   width: 98vw;
   max-width: 540px;
-  min-width: 0;
   margin: 2rem auto;
   border-radius: 20px;
   padding: 2.2rem 1.4rem 2rem 1.4rem;
@@ -91,184 +93,44 @@ input[type=number]:focus, select:focus {
   outline: 2px solid #80bfff;
 }
 
+/* =========================
+   FRASES (MOBILE FIRST)
+   ========================= */
 #container-frases {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1em;
   background: #f0f5ff;
   border: 1px solid #dde5f2;
-  padding: 1.2rem;
+  padding: 0.8em 0.25em;
   border-radius: 10px;
-  margin-bottom: 2em;
   font-size: 1.05em;
   line-height: 1.55;
   min-height: 95px;
-  max-height: 38vh;
+  max-height: none;
   overflow-y: auto;
   word-break: break-word;
   box-sizing: border-box;
   width: 100%;
+  margin-bottom: 2.3em;
 }
-
-#container-frases p {
-  margin-top: 0.2em;
-  margin-bottom: 0.4em;
-}
-
-.escala-group {
-  margin-bottom: 1.5em;
-}
-.escala-label {
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  margin-bottom: .66em;
-}
-.escala-aux {
-  color: #3573b0;
-  font-size: 0.94em;
-  font-weight: 400;
-}
-
-.likert-row {
-  display: flex;
-  gap: 0.6em;
-  justify-content: space-between;
-  margin-bottom: 0.4em;
-  flex-wrap: wrap;
-  width: 100%;
-}
-.likert-label {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: 0.98em;
-  font-weight: 400;
-  min-width: 30px;
-  flex: 1;
-}
-.likert-label span {
-  font-size: 0.92em;
-  font-weight: 500;
-  color: #3490fc;
-  margin-top: 1px;
-  line-height: 1.2;
-}
-.likert-label input[type=radio] {
-  margin-bottom: 3px;
-}
-.likert-label:first-child span {
-  color: #bd1b2f;
-}
-.likert-label:last-child span {
-  color: #198959;
-}
-
-#final h2 {
-  margin-bottom: 0.7em;
-  color: #2876c9;
-}
-
-@media (max-width: 1100px) {
-  main {
-    max-width: 90vw;
-  }
-}
-@media (max-width: 900px) {
-  main {
-    max-width: 97vw;
-  }
-}
-@media (max-width: 700px) {
-  main {
-    max-width: 100vw;
-    margin: 0;
-    padding: 0.7rem 1rem 1.7rem 1rem;
-    border-radius: 0;
-    min-height: 100vh;
-  }
-  #container-frases {
-    font-size: 1em;
-    max-height: 36vh;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
-  }
-  .likert-row {
-    font-size: 0.98em;
-    padding: 0.3em 0.3em;
-    gap: 0.3em;
-  }
-  .likert-label {
-    min-width: 25px;
-  }
-}
-
-@media (max-width: 400px) {
-  main {
-    padding: 0.2rem 0.1rem !important;
-  }
-  #container-frases {
-    padding: .6em .2em;
-  }
-}
-
-#loading {
-  display: none;
-  position: fixed;
-  z-index: 100;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: rgba(244,246,250,0.92);
-  align-items: center;
-  justify-content: center;
-}
-#loading.show {
-  display: flex;
-}
-.loading-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 2.5em 2em;
-  box-shadow: 0 6px 36px rgba(41,143,255,0.10);
-  text-align: center;
-  min-width: 210px;
-}
-.spinner {
-  border: 4px solid #e3ebf5;
-  border-top: 4px solid #298fff;
-  border-radius: 50%;
-  width: 36px; height: 36px;
-  margin: 0 auto 18px auto;
-  animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-  0% { transform: rotate(0deg);}
-  100% { transform: rotate(360deg);}
-}
-
-#container-frases.frases-duplas {
-  display: flex;
-  flex-direction: column;
-  gap: 1.1em;
-  background: none;
-  border: none;
-  margin-bottom: 2em;
-  padding: 0;
-  width: 100%;
-}
-
 
 .frase-bloco {
   background: #fafdff;
   border: 1.5px solid #d8e5f2;
   border-radius: 14px;
-  padding: 1em 1.1em 1em 1.1em;
+  padding: 1em 1.1em;
   flex: 1 1 0px;
-  min-width: 230px;
-  max-width: 100%;
+  min-width: 0px;
+  width: 100%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
+
 .frase-original  { border-left: 5px solid #005fbf; }
 .frase-reconstruida { border-left: 5px solid #1ab685; }
+
 .frase-legenda {
   font-size: 0.97em;
   color: #2289c8;
@@ -297,45 +159,133 @@ input[type=number]:focus, select:focus {
   opacity: 0.95;
 }
 
-@media (max-width: 700px) {
+/* =========================
+   LIKERT / ESCALAS
+   ========================= */
+.escala-group {
+  margin-bottom: 1.5em;
+}
+.escala-label {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  margin-bottom: .66em;
+}
+.escala-aux {
+  color: #3573b0;
+  font-size: 0.94em;
+  font-weight: 400;
+}
+
+#avaliacao-form .escala-group .criterio-descricao {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 4px 0 10px 0;
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.likert-row {
+  display: flex;
+  gap: 0.6em;
+  justify-content: space-between;
+  margin-bottom: 1.2em;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.likert-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.98em;
+  font-weight: 400;
+  min-width: 30px;
+  flex: 1;
+}
+.likert-label span {
+  font-size: 0.92em;
+  font-weight: 500;
+  color: #3490fc;
+  margin-top: 1px;
+  line-height: 1.2;
+}
+.likert-label input[type=radio] {
+  margin-bottom: 3px;
+}
+.likert-label:first-child span { color: #bd1b2f; }
+.likert-label:last-child span { color: #198959; }
+
+/* =========================
+   LOADING
+   ========================= */
+#loading {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(244,246,250,0.92);
+  align-items: center;
+  justify-content: center;
+}
+#loading.show { display: flex; }
+
+.loading-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 2.5em 2em;
+  box-shadow: 0 6px 36px rgba(41,143,255,0.10);
+  text-align: center;
+  min-width: 210px;
+}
+.spinner {
+  border: 4px solid #e3ebf5;
+  border-top: 4px solid #298fff;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  margin: 0 auto 18px auto;
+  animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
+
+/* =========================
+   MEDIA QUERIES - TABLET E DESKTOP
+   ========================= */
+@media (min-width: 700px) {
   main {
-    max-width: 100vw;
-    margin: 0;
-    padding: 0.7rem 0.15rem 1.7rem 0.15rem;
-    border-radius: 0;
-    min-height: 100vh;
+    max-width: 90vw;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    border-radius: 20px;
   }
+
+  /* Frases lado a lado */
   #container-frases {
-    font-size: 1.08em; /* aumenta fonte para leitura mobile */
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.4rem;
     max-height: none;
-    padding-left: 0.25em;
-    padding-right: 0.25em;
-    padding-top: 0.8em;
-    padding-bottom: 0.8em;
+    padding: 1.5rem;
   }
   .frase-bloco {
-    padding: 1.1em 0.8em 1.1em 0.8em;
-    margin-bottom: 0.25em;
-    min-width: 0;
-    font-size: 1.12em;
+    flex: 1 1 calc(50% - 0.7rem);
+    min-width: 300px;
+    max-width: 100%;
   }
-  .frase-legenda { font-size: 1.05em; }
 }
 
-@media (max-width: 420px) {
+@media (min-width: 1100px) {
   main {
-    padding: 0.09rem 0.04rem;
+    max-width: 1000px;
+    padding: 3rem;
   }
-  #container-frases { padding: .3em .04em; }
-  .frase-bloco { padding: 0.75em 0.17em; }
+  #container-frases {
+    gap: 2rem;
+  }
+  .frase-bloco {
+    flex: 1 1 calc(50% - 1rem);
+  }
 }
-
-/* Garanta que cada frase-bloco ocupa toda a largura disponível */
-.frase-bloco {
-  width: 100%;
-  box-sizing: border-box;
-}
-
-/* Dê mais espaço entre os blocos das frases e os botões */
-#container-frases { margin-bottom: 2.3em; }
-.likert-row { margin-bottom: 1.2em; }
