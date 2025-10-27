@@ -34,14 +34,36 @@
         </div>
         <div class="fieldgroup">
           <label for="escolaridade">Escolaridade</label>
-          <select id="escolaridade" required>
-            <option value="">Selecione</option>
-            <option>Ensino Médio</option>
-            <option>Graduação</option>
-            <option>Mestrado</option>
-            <option>Doutorado</option>
-            <option>Outro</option>
-          </select>
+            <select name="escolaridade" id="escolaridade" required>
+              <option value="" disabled selected>Selecione seu nível de escolaridade</option>
+              
+              <optgroup label="Ensino Fundamental">
+                <option>Ensino Fundamental Incompleto</option>
+                <option>Ensino Fundamental Completo</option>
+              </optgroup>
+
+              <optgroup label="Ensino Médio">
+                <option>Ensino Médio Incompleto</option>
+                <option>Ensino Médio Completo</option>
+              </optgroup>
+
+              <optgroup label="Educação Superior">
+                <option>Graduação Incompleta</option>
+                <option>Graduação Completa</option>
+                <option>Pós-graduação Lato Sensu (Especialização)</option>
+                <option>Mestrado Incompleto</option>
+                <option>Mestrado Completo</option>
+                <option>Doutorado Incompleto</option>
+                <option>Doutorado Completo</option>
+                <option>Pós-Doutorado</option>
+              </optgroup>
+
+              <optgroup label="Outros">
+                <option>Curso Técnico</option>
+                <option>Curso Profissionalizante</option>
+                <option>Outro</option>
+              </optgroup>
+            </select>
         </div>
         <button id="iniciar-avaliacao" class="btn-principal" type="button">Começar avaliação</button>
       </form>
@@ -53,33 +75,59 @@
         Leia atentamente as duas frases abaixo. Arraste para cima para ler tudo, se necessário.
       </p>
 
-
       <div id="container-frases" class="frases-duplas">
         <div class="frase-bloco frase-original">
           <div class="frase-legenda">Frase original</div>
           <p id="frase-original"></p>
         </div>
         <div class="frase-bloco frase-reconstruida">
-          <div class="frase-legenda">Frase reestruturada por IA</div>
+          <div class="frase-legenda">Frase reescrita por IA</div>
           <p id="frase-reconstruida"></p>
         </div>
       </div>
 
       <form id="avaliacao-form">
+
+        <!-- Clareza -->
         <div class="escala-group">
-          <label class="escala-label">Clareza <span class="escala-aux">— Improvement in clarity</span></label>
+          <label class="escala-label">
+            Clareza
+            <span class="escala-aux">— Improvement in clarity</span>
+          </label>
+          <p class="criterio-descricao">
+            Avalie se a frase reformulada é fácil de entender e transmite a ideia de forma direta.          
+          </p>
           <div class="likert-row" data-criterio="clareza"></div>
         </div>
+
+        <!-- Fidelidade -->
         <div class="escala-group">
-          <label class="escala-label">Fidelidade ao conteúdo original <span class="escala-aux">— Fidelity to the original content</span></label>
+          <label class="escala-label">
+            Fidelidade ao conteúdo original
+            <span class="escala-aux">— Fidelity to the original content</span>
+          </label>
+          <p class="criterio-descricao">
+            Avalie se a frase mantém o mesmo significado da original.
+            A ideia principal e as informações devem permanecer as mesmas.
+          </p>
           <div class="likert-row" data-criterio="fidelidade"></div>
         </div>
+
+        <!-- Efetividade -->
         <div class="escala-group">
-          <label class="escala-label">Efetividade na remoção de ambiguidade e sarcasmo <span class="escala-aux">— Effectiveness in removing ambiguity and sarcasm</span></label>
+          <label class="escala-label">
+            Efetividade na remoção de ambiguidade e sarcasmo
+            <span class="escala-aux">— Effectiveness in removing ambiguity and sarcasm</span>
+          </label>
+          <p class="criterio-descricao">
+            Avalie se a frase remove ambiguidades e sarcasmos, tornando o sentido mais direto.
+          </p>
           <div class="likert-row" data-criterio="efetividade"></div>
         </div>
+
         <button id="proxima-frase" class="btn-principal" type="button">Próxima frase</button>
       </form>
+
     </section>
 
     <!-- Página final -->

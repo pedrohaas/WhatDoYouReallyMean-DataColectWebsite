@@ -128,6 +128,14 @@ input[type=number]:focus, select:focus {
   font-weight: 400;
 }
 
+#avaliacao-form .escala-group .criterio-descricao {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 4px 0 10px 0;
+  line-height: 1.4;
+  text-align: justify;
+}
+
 .likert-row {
   display: flex;
   gap: 0.6em;
